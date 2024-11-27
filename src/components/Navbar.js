@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import ThemeToggle from "@/components/ThemeToggle";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -85,6 +86,8 @@ const Navbar = () => {
           />
         </div>
       )}
+
+      <ThemeToggle />
     </nav>
   );
 };
