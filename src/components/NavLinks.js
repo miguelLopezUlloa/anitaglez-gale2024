@@ -1,18 +1,18 @@
 import Link from "next/link";
 
-const NavLinks = ({ theme }) => {
-  const linkClass = theme === "dark" ? "text-gray-300" : "text-gray-600";
-  const hoverClass = theme === "dark" ? "hover:text-white" : "hover:text-gray-800";
+const NavLinks = ({ isMobile, theme }) => {
+  const baseClass = theme === "dark" ? "text-gray-300" : "text-gray-600";
+  const hoverClass = "hover:text-gray-800 dark:hover:text-white";
 
   return (
-    <div className="hidden sm:flex sm:items-center sm:space-x-4">
-      <Link href="#" className={`${linkClass} ${hoverClass}`}>
+    <div className={isMobile ? "space-y-2" : "hidden sm:flex space-x-4"}>
+      <Link href="#" className={`${baseClass} ${hoverClass} block`}>
         Artesanias
       </Link>
-      <Link href="#" className={`${linkClass} ${hoverClass}`}>
+      <Link href="#" className={`${baseClass} ${hoverClass} block`}>
         Pinturas
       </Link>
-      <Link href="#" className={`${linkClass} ${hoverClass}`}>
+      <Link href="#" className={`${baseClass} ${hoverClass} block`}>
         Obra artística
       </Link>
     </div>
