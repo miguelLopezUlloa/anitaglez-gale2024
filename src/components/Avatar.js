@@ -4,7 +4,7 @@ const Avatar = () => {
   return (
     <Image
       src="/avatar.jpg" // Ajusta el path a tu imagen
-      alt="Avatar"
+      alt="Anita Gonzalez Delgado"
       width={40}
       height={40}
       className="rounded-full"
