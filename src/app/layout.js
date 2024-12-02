@@ -2,6 +2,7 @@ import { Inter } from "next/font/google";
 import "@/app/styles/globals.css";
 import Navbar from "@/components/Navbar";
 import { ThemeProvider } from "@/context/ThemeContext";
+import Copyright from "@/components/Copyright";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,10 +16,18 @@ export default function RootLayout({ children }) {
     <ThemeProvider>
       <html lang="en">
         <body
-          className={`${inter.className} bg-gray-50 dark:bg-gray-800 transition-colors duration-300`}
+                    className={`${inter.className} bg-gray-50 dark:bg-gray-800 transition-colors 
+                    duration-300 grid grid-rows-[auto_1fr_auto] min-h-screen`}
         >
+
+          {/* Header */}
           <Navbar />
-          {children}
+
+          {/* Main Content */}
+          <main className="flex-grow">{children}</main>
+
+          {/* Footer */}
+          <Copyright />
         </body>
       </html>
     </ThemeProvider>
