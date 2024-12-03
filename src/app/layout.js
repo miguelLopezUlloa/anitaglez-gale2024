@@ -12,6 +12,7 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+
   return (
     <ThemeProvider>
       <html lang="en">
@@ -20,8 +21,8 @@ export default function RootLayout({ children }) {
                     duration-300 grid grid-rows-[auto_1fr_auto] min-h-screen`}
         >
 
-          {/* Header */}
-          <Navbar />
+          {/* Navbar */}
+          <Navbar/>
 
           {/* Main Content */}
           <main className="flex-grow">{children}</main>

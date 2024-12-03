@@ -16,10 +16,10 @@ const NavLinks = ({ isMobile, theme }) => {
   return (
    <> 
     <div className={isMobile ? "space-y-2" : "hidden sm:flex space-x-4"}>
-      <Link href="#" className={`${baseClass} ${hoverClass} block`}>
+      <Link href="/original-paintings" className={`${baseClass} ${hoverClass} block`}>
         Original paintings
       </Link>
-      <Link href="#" className={`${baseClass} ${hoverClass} block`}>
+      <Link href="/digital-prints" className={`${baseClass} ${hoverClass} block`}>
         Digital prints
       </Link>
       <Link href="#" className={`${baseClass} ${hoverClass} block`}>

@@ -1,9 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import 'flowbite';
 
-/* styles/globals.css */
+@import "flowbite";
+
+/* style/globals.css */
 :root {
   --background-color: #ffffff;
   --background-image: none;
