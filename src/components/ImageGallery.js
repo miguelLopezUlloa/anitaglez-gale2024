@@ -51,20 +51,20 @@ const ImageGallery = () => {
   };
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 p-4">
       {/* Galería de imágenes */}
       {images.map((image, index) => (
         <div
           key={index}
           className="relative group cursor-pointer overflow-hidden rounded-lg shadow-lg"
           onClick={() => handleOpenModal(image)}
-          style={{ height: "460px" }} // Altura ajustada en un 20%
+          style={{ height: "652px" }} // Altura aumentada en 15%
         >
           <Image
             src={image.src}
             alt={image.title}
-            width={460} // Ancho ajustado en un 20%
-            height={40} // Altura ajustada proporcionalmente
+            width={250} // Mantiene el ancho proporcional
+            height={652} // Altura ajustada en 15% más
             className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300"
           />
           {/* Superposición de información en hover */}
