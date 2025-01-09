@@ -11,9 +11,9 @@ const posters = [
 ];
 
 const related = [
-  { src: "/images/image1.jpg", description: "Titan World", dimensions: "30 x 40 inches", pricing: 49.99 },
-  { src: "/images/image2.jpg", description: "Fantastic Dream", dimensions: "24 x 36 inches", pricing: 39.99 },
-  { src: "/images/image3.jpg", description: "Ocean Breeze", dimensions: "18 x 24 inches", pricing: 29.99 },
+  { src: "/images/image1.jpg", title: "Titan World", description: "This is a brief description", dimensions: "30 x 40 inches", pricing: 49.99 },
+  { src: "/images/image2.jpg", title: "Fantastic Dream", description: "This is a brief description", dimensions: "24 x 36 inches", pricing: 39.99 },
+  { src: "/images/image3.jpg", title: "Ocean Breeze", description: "This is a brief description", dimensions: "18 x 24 inches", pricing: 29.99 },
 ];
 
 // Personalizar flechas del carrusel
@@ -40,6 +40,8 @@ const CustomNextArrow = ({ onClick }) => (
 const PosterCarousel = () => {
   const [nav1, setNav1] = useState(null);
   const [nav2, setNav2] = useState(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
+
   let sliderRef1 = useRef(null);
   let sliderRef2 = useRef(null);
 
@@ -59,6 +61,7 @@ const PosterCarousel = () => {
     arrows: true,
     prevArrow: <CustomPrevArrow />,
     nextArrow: <CustomNextArrow />,
+    beforeChange: (oldIndex, newIndex) => setCurrentIndex(newIndex), // Actualiza el índice actual
     responsive: [
       {
         breakpoint: 768, // Pantallas medianas y pequeñas
@@ -112,18 +115,28 @@ const PosterCarousel = () => {
         {/* Información del producto */}
         <div className="p-6 lg:w-6/12">
           <div className="uppercase tracking-wide text-sm text-indigo-500 dark:text-indigo-300 font-semibold">
-            Product Category
+            Digital Prints
           </div>
           <h1 className="block mt-1 text-2xl leading-tight font-medium text-black dark:text-white">
-            Product Title
+              {related[currentIndex]?.title || "No Title"}
           </h1>
-          <p className="mt-4 text-gray-500 dark:text-gray-400">This is a brief description of the product.</p>
+          <p className="mt-4 text-gray-500 dark:text-gray-400">
+              {related[currentIndex]?.description || "No Description"}
+          </p>
           <div className="mt-4">
-            <span className="text-2xl font-semibold text-black dark:text-white">$49.99</span>
+              <span className="text-2xl font-semibold text-black dark:text-white">
+              ${related[currentIndex]?.pricing || "0.00"}
+              </span>
           </div>
-          <button className="mt-6 bg-indigo-500 dark:bg-indigo-600 text-white px-6 py-2 rounded-md hover:bg-indigo-600 dark:hover:bg-indigo-500 transition-all">
-            Etsy Shop
-          </button>
+            <button
+              type="button"
+              className="mt-6 px-4 py-2 text-white rounded-md dark:hover:bg-gray-800 transition-all"
+              style={{
+                backgroundColor: "#284756",
+              }}
+            >
+              Etsy Shop
+            </button>
         </div>
       </div>
 
@@ -135,10 +148,10 @@ const PosterCarousel = () => {
             {related.map((product, index) => (
               <div key={index} className="p-2">
                 <div className="relative h-48">
-                  <Image src={product.src} alt={product.description} layout="fill" objectFit="cover" />
+                  <Image src={product.src} alt={product.title} layout="fill" objectFit="cover" />
                 </div>
                 <h3 className="text-sm font-medium text-gray-900 dark:text-gray-100 text-center mt-2">
-                  {product.description}
+                  {product.title}
                 </h3>
                 <p className="text-center text-gray-600 dark:text-gray-400 mt-1">${product.pricing}</p>
               </div>

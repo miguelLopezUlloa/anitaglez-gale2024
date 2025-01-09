@@ -8,17 +8,17 @@ const ImageGallery = () => {
   // Datos de la galería
   const images = [
     {
-      src: "/images/image1.jpg",
+      src: "/images/image8.png",
       title: "Sunset in the Mountains",
       dimensions: "24 x 36 inches",
     },
     {
-      src: "/images/image2.jpg",
+      src: "/images/image2.png",
       title: "Ocean Breeze",
       dimensions: "18 x 24 inches",
     },
     {
-      src: "/images/image3.jpg",
+      src: "/images/image3.png",
       title: "Golden Forest",
       dimensions: "30 x 40 inches",
     },
@@ -33,7 +33,12 @@ const ImageGallery = () => {
       dimensions: "30 x 40 inches",
     },
     {
-      src: "/images/image6.jpg",
+      src: "/images/image6.png",
+      title: "Fantastic Dream",
+      dimensions: "30 x 40 inches",
+    },
+    {
+      src: "/images/image7.jpg",
       title: "Fantastic Dream",
       dimensions: "30 x 40 inches",
     },
