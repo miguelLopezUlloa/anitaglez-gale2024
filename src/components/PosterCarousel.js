@@ -67,6 +67,10 @@ const PosterCarousel = () => {
         breakpoint: 768, // Pantallas medianas y pequeñas
         settings: { dots: false, arrows: true },
       },
+      {
+        breakpoint: 480, // Pantallas pequeñas
+        settings: { slidesToShow: 1, arrows: false }, // Muestra 1 slide y oculta flechas
+      },
     ],
   };
 
@@ -87,6 +91,10 @@ const PosterCarousel = () => {
       {
         breakpoint: 768, // Pantallas medianas
         settings: { slidesToShow: 1 },
+      },
+      {
+        breakpoint: 480, // Pantallas pequeñas
+        settings: { slidesToShow: 1, arrows: false }, // Muestra 1 slide y oculta flechas
       },
     ],
   };
