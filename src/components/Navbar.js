@@ -34,7 +34,7 @@ const Navbar = () => {
 
         {/* Barra de Búsqueda y Toggle de Tema */}
         <div className="hidden sm:flex items-center space-x-4">
-          <SearchBar theme={theme} />
+          {/* <SearchBar theme={theme} /> */}
           <ThemeToggle />
         </div>
 

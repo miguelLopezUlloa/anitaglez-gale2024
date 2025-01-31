@@ -8,38 +8,48 @@ const ImageGallery = () => {
   // Datos de la galería
   const images = [
     {
-      src: "/images/image8.png",
-      title: "Sunset in the Mountains",
+      src: "/images/anaibis_pink.png",
+      title: "Confesiones en era de Vacío",
       dimensions: "24 x 36 inches",
     },
     {
-      src: "/images/image2.png",
-      title: "Ocean Breeze",
+      src: "/images/anaibis_fuego.jpg",
+      title: "Caballo de Fuego",
       dimensions: "18 x 24 inches",
     },
     {
-      src: "/images/image3.png",
-      title: "Golden Forest",
+      src: "/images/anaibis_espiral.jpg",
+      title: "Restos, Re-comenzar",
       dimensions: "30 x 40 inches",
     },
     {
-      src: "/images/image4.jpg",
-      title: "Black Forest",
+      src: "/images/anaibis_rojo.jpg",
+      title: "Ingravidez",
       dimensions: "30 x 40 inches",
     },
     {
-      src: "/images/image5.jpg",
-      title: "Titan World",
+      src: "/images/anaibis_monarca.jpg",
+      title: "Monarca",
       dimensions: "30 x 40 inches",
     },
     {
-      src: "/images/image6.png",
-      title: "Fantastic Dream",
+      src: "/images/anaibis_aleph.png",
+      title: "Aleph",
       dimensions: "30 x 40 inches",
     },
     {
-      src: "/images/image7.jpg",
-      title: "Fantastic Dream",
+      src: "/images/anaibis_placebo.jpg",
+      title: "Placebo",
+      dimensions: "30 x 40 inches",
+    },
+    {
+      src: "/images/anaibis_hilvanando.png",
+      title: "Hilvanando Encrucijadas",
+      dimensions: "30 x 40 inches",
+    },
+    {
+      src: "/images/anaibis_antillana.jpg",
+      title: "Por el mar de las antillas",
       dimensions: "30 x 40 inches",
     },
   ];
