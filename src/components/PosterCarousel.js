@@ -5,15 +5,15 @@ import Slider from "react-slick";
 import Image from "next/image";
 
 const posters = [
-  "/images/image1.jpg",
-  "/images/image2.jpg",
-  "/images/image3.jpg",
+  "/images/anaibis_monarca.jpg",
+  "/images/anaibis_antillana.jpg",
+  "/images/anaibis_hilvanando.png",
 ];
 
 const related = [
-  { src: "/images/image1.jpg", title: "Titan World", description: "This is a brief description", dimensions: "30 x 40 inches", pricing: 49.99 },
-  { src: "/images/image2.jpg", title: "Fantastic Dream", description: "This is a brief description", dimensions: "24 x 36 inches", pricing: 39.99 },
-  { src: "/images/image3.jpg", title: "Ocean Breeze", description: "This is a brief description", dimensions: "18 x 24 inches", pricing: 29.99 },
+  { src: "/images/anaibis_monarca.jpg", title: "Titan World", description: "This is a brief description", dimensions: "30 x 40 inches", pricing: 49.99 },
+  { src: "/images/anaibis_antillana.jpg", title: "Fantastic Dream", description: "This is a brief description", dimensions: "24 x 36 inches", pricing: 39.99 },
+  { src: "/images/anaibis_hilvanando.png", title: "Ocean Breeze", description: "This is a brief description", dimensions: "18 x 24 inches", pricing: 29.99 },
 ];
 
 // Personalizar flechas del carrusel

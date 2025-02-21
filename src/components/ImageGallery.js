@@ -25,12 +25,12 @@ const ImageGallery = () => {
     {
       src: "/images/anaibis_rojo.jpg",
       title: "Ingravidez",
-      dimensions: "30 x 40 inches",
+      dimensions: "39 x 51 inches",
     },
     {
       src: "/images/anaibis_monarca.jpg",
       title: "Monarca",
-      dimensions: "30 x 40 inches",
+      dimensions: "39 x 51 inches",
     },
     {
       src: "/images/anaibis_aleph.png",
@@ -45,12 +45,12 @@ const ImageGallery = () => {
     {
       src: "/images/anaibis_hilvanando.png",
       title: "Hilvanando Encrucijadas",
-      dimensions: "30 x 40 inches",
+      dimensions: "39 x 31 inches",
     },
     {
       src: "/images/anaibis_antillana.jpg",
       title: "Por el mar de las antillas",
-      dimensions: "30 x 40 inches",
+      dimensions: "51 x 39 inches",
     },
   ];
 
