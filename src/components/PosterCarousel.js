@@ -5,15 +5,23 @@ import Slider from "react-slick";
 import Image from "next/image";
 
 const posters = [
-  "/images/anaibis_monarca.jpg",
-  "/images/anaibis_antillana.jpg",
-  "/images/anaibis_hilvanando.png",
+  "/images/digital-prints/anaibis_dp_aleph.jpg",
+  "/images/digital-prints/anaibis_dp_caballofuego.jpg",
+  "/images/digital-prints/anaibis_dp_confesiones.jpg",
+  "/images/digital-prints/anaibis_dp_encruzijada.jpg",
+  "/images/digital-prints/anaibis_dp_ingravidez.jpg",
+  "/images/digital-prints/anaibis_dp_recomenzar.jpg",
+  "/images/digital-prints/anaibis_dp_semejanza.jpg",
 ];
 
 const related = [
-  { src: "/images/anaibis_monarca.jpg", title: "Titan World", description: "This is a brief description", dimensions: "30 x 40 inches", pricing: 49.99 },
-  { src: "/images/anaibis_antillana.jpg", title: "Fantastic Dream", description: "This is a brief description", dimensions: "24 x 36 inches", pricing: 39.99 },
-  { src: "/images/anaibis_hilvanando.png", title: "Ocean Breeze", description: "This is a brief description", dimensions: "18 x 24 inches", pricing: 29.99 },
+  { src: "/images/digital-prints/anaibis_dp_aleph.jpg", title: "Aleph", description: "This is a brief description", dimensions: "30 x 40 inches", pricing: 49.99 },
+  { src: "/images/digital-prints/anaibis_dp_caballofuego.jpg", title: "Caballo de Fuego", description: "This is a brief description", dimensions: "30 x 40 inches", pricing: 49.99 },
+  { src: "/images/digital-prints/anaibis_dp_confesiones.jpg", title: "Confesiones en era de Vacío", description: "This is a brief description", dimensions: "24 x 36 inches", pricing: 39.99 },
+  { src: "/images/digital-prints/anaibis_dp_encruzijada.jpg", title: "Hilvanando Encrucijadas", description: "This is a brief description", dimensions: "18 x 24 inches", pricing: 29.99 },
+  { src: "/images/digital-prints/anaibis_dp_ingravidez.jpg", title: "Ingravidez", description: "This is a brief description", dimensions: "30 x 40 inches", pricing: 49.99 },
+  { src: "/images/digital-prints/anaibis_dp_recomenzar.jpg", title: "Restos, Re-comenzar", description: "This is a brief description", dimensions: "30 x 40 inches", pricing: 49.99 },
+  { src: "/images/digital-prints/anaibis_dp_semejanza.jpg", title: "A su imagen y semejanza", description: "This is a brief description", dimensions: "30 x 40 inches", pricing: 49.99 },
 ];
 
 // Personalizar flechas del carrusel
