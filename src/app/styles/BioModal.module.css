@@ -8,7 +8,7 @@
   min-height: 50vh; /* Altura mínima para asegurar que el modal sea visible */
   max-height: 80vh; /* Altura máxima para evitar que sea demasiado grande */
   width: 100%; /* Ancho completo */
-  max-width: 800px; /* Ancho máximo para pantallas grandes */
+  max-width: 1200px; /* Ancho máximo para pantallas grandes */
   display: flex; /* Alineación flexible para centrar el contenido */
   flex-direction: column; /* Alineación vertical del contenido */
   justify-content: center; /* Centra el contenido verticalmente */

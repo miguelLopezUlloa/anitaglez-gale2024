@@ -9,13 +9,13 @@ const BioModal = ({ isOpen, onClose, title, text  }) => {
 
   return (
     <div
-      className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 p-4 overflow-y-auto"
+      className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-90 z-50 p-4 overflow-y-auto"
     >
       {/* Contenedor principal del modal */}
       <div
         className={styles.modalContainer} // Aplicamos los estilos del archivo CSS modular
         style={{
-          backgroundImage: `linear-gradient(rgba(0, 0, 0, ${transparency}), rgba(0, 0, 0, ${transparency})), url('/images/AnitaGonzalezDelgadoEng.jpg')`,
+          backgroundImage: `linear-gradient(rgba(0, 0, 0, ${transparency}), rgba(0, 0, 0, ${transparency})), url('/images/bio/AnitaGonzalezDelgadoEng.jpg')`,
         }}
       >
         {/* Botón de cierre */}
