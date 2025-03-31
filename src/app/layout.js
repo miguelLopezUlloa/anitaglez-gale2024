@@ -5,6 +5,8 @@ import Navbar from "@/components/Navbar";
 import { Seo } from "@/components/Seo";
 import { ThemeProvider } from "@/context/ThemeContext";
 import Copyright from "@/components/Copyright";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -34,10 +36,14 @@ export default function RootLayout({ children }) {
             <Navbar/>
 
             {/* Main Content */}
-            <main className="flex-grow">{children}</main>
+            <main className="flex-grow w-full overflow-x-hidden">{children}
+              <ToastContainer />
+            </main>
 
             {/* Footer */}
-            <Copyright />
+            <footer className="w-full bg-gray-100 dark:bg-gray-900 py-6 px-4 sm:px-6 lg:px-8">
+              <Copyright />
+            </footer>
           </body>
         </html>
       </ThemeProvider>

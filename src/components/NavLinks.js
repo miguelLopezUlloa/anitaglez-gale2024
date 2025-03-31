@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import ContactModal from "@/components/ContactModal";
+import { openAnIbisArtShop } from "../lib/openAnIbisArtShop";
 
 const NavLinks = ({ isMobile, theme }) => {
   const baseClass = theme === "dark" ? "text-gray-300" : "text-gray-600";
@@ -22,9 +23,12 @@ const NavLinks = ({ isMobile, theme }) => {
       <Link href="/digital-prints" className={`${baseClass} ${hoverClass} block`}>
         Digital prints
       </Link>
-      <Link href="#" className={`${baseClass} ${hoverClass} block`}>
+      <button
+        onClick={openAnIbisArtShop}
+        className={`${baseClass} ${hoverClass} block`}
+      >
         Shop
-      </Link>
+      </button>
       {/* Opción de Contacto */}
       <button
           onClick={handleContactClick}

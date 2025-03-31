@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { showToast } from "../lib/util"; // Asegúrate de que la ruta sea correcta
 
 const ContactModal = ({ isOpen, onClose }) => {
   const [formData, setFormData] = useState({
@@ -54,8 +55,8 @@ const ContactModal = ({ isOpen, onClose }) => {
           headers: { "Content-Type": "application/json" },
         }
       );
-      console.log("Response:", response.data);
-      alert("Message sent successfully!");
+      //console.log("Response:", response.data);
+      showToast("Message sent successfully!", "success", 5000);
       onClose(); // Cerrar el modal al enviar correctamente
     } catch (error) {
       console.error("Error sending message:", error);

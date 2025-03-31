@@ -24,29 +24,33 @@ const Navbar = () => {
             ? "bg-gray-800 border-gray-700 text-gray-300"
             : "bg-white border-gray-200 text-gray-600"
         }`}
+        style={{ maxWidth: "100vw", overflow: "hidden" }} // Limitar ancho para evitar desbordamiento
       >
         <div className="flex justify-between items-center">
+
           {/* Avatar y Enlaces */}
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-4 w-full">
 
             {/* Agregamos onClick al Avatar para abrir el modal */}
             <div
               onClick={() => setIsBioModalOpen(true)}
-              className="cursor-pointer"
+              className="cursor-pointer flex-shrink-0"
             >
                 <Avatar />
             </div>
-            <div className="hidden sm:flex">
+            <div className="hidden sm:flex flex-grow">
               <NavLinks isMobile={false} theme={theme} />
             </div>
           </div>
+
           {/* Barra de Búsqueda y Toggle de Tema */}
           <div className="hidden sm:flex items-center space-x-4">
             {/* <SearchBar theme={theme} /> */}
             <ThemeToggle />
           </div>
+
           {/* Menú de Hamburguesa para Móviles */}
-          <div className="sm:hidden">
+          <div className="sm:hidden flex-shrink-0">
             <button
               onClick={toggleMenu}
               className="text-gray-500 dark:text-gray-300 hover:text-gray-700 focus:outline-none focus:text-gray-700"
@@ -68,11 +72,12 @@ const Navbar = () => {
             </button>
           </div>
         </div>
+
         {/* Menú Desplegable para Móviles */}
         {isOpen && (
-          <div className="sm:hidden mt-4 space-y-2">
+          <div className="sm:hidden mt-4 space-y-2 overflow-x-hidden">
             <NavLinks isMobile={true} theme={theme} />
-            <SearchBar theme={theme} />
+            {/* <SearchBar theme={theme} /> */}
             <div className="flex justify-end">
               <ThemeToggle />
             </div>
