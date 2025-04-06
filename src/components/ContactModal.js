@@ -49,18 +49,20 @@ const ContactModal = ({ isOpen, onClose }) => {
 
     try {
       const response = await axios.post(
-        "https://74ftjvitlg.execute-api.us-east-2.amazonaws.com/default",
+        "https://74ftjvitlg.execute-api.us-east-2.amazonaws.com/default/sendEmailService",
         requestBody,
         {
           headers: { "Content-Type": "application/json" },
         }
       );
       //console.log("Response:", response.data);
-      showToast("Message sent successfully!", "success", 5000);
+      showToast("Message sent successfully!", "success", 200);
       onClose(); // Cerrar el modal al enviar correctamente
     } catch (error) {
-      console.error("Error sending message:", error);
-      alert("Failed to send the message.");
+      //console.error("Error sending message:", error);
+      showToast("Failed to send the message.", "error", 505);
+      onClose();
+      //alert(".");
     }
   };
 
