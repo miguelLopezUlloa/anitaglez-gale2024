@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import qs from "qs"; // Asegúrate de instalar esta librería con `npm install qs`
 import { showToast } from "../lib/util"; // Asegúrate de que la ruta sea correcta
 
 const ContactModal = ({ isOpen, onClose }) => {
@@ -43,26 +44,32 @@ const ContactModal = ({ isOpen, onClose }) => {
     Object.keys(formData).forEach((key) => validateField(key, formData[key]));
     if (Object.keys(errors).length > 0) return;
 
-    const requestBody = {
-      body: JSON.stringify(formData),
-    };
+    const requestBody = qs.stringify({
+      from: `${formData.full_name} <${formData.email}>`,
+      to: "mikauran@hotmail.com", // Cambia esto al correo de destino
+      subject: "New Contact Message",
+      text: formData.message,
+    });
 
     try {
       const response = await axios.post(
-        "https://74ftjvitlg.execute-api.us-east-2.amazonaws.com/default/sendEmailService",
+        "https://api.mailgun.net/v3/anaibisgonzalez.com/messages",
         requestBody,
         {
-          headers: { "Content-Type": "application/json" },
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          auth: {
+            username: "api",
+            password: process.env.REACT_APP_MAILGUN_API_KEY,
+          },
         }
-      );
-      //console.log("Response:", response.data);
+      );      
+      console.log("Request Body:", requestBody);
       showToast("Message sent successfully!", "success", 200);
       onClose(); // Cerrar el modal al enviar correctamente
     } catch (error) {
-      //console.error("Error sending message:", error);
-      showToast("Failed to send the message.", "error", 505);
+      console.error("Error sending message:", error.response?.data || error.message);
+      showToast("Failed to send the message.", "error", error.message);
       onClose();
-      //alert(".");
     }
   };
 
