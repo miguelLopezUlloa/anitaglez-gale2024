@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://www.anaibisgonzalez.com
+
+# Sitemaps
+Sitemap: https://www.anaibisgonzalez.com/sitemap.xml
