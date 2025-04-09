@@ -250,7 +250,7 @@ const PosterCarousel = () => {
                   <h3 className="text-sm font-medium text-gray-900 dark:text-gray-100 text-center mt-2 line-clamp-1">
                     {product.title}
                   </h3>
-                  <p className="text-center text-gray-600 dark:text-gray-400 mt-1">${product.pricing}</p>
+                  <p className="text-center text-gray-600 dark:text-gray-400 mt-1">${product.dimensions}</p>
                 </div>
               </div>
             ))}
