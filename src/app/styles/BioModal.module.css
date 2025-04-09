@@ -1,0 +1,48 @@
+/* app/styles/BioModal.module.css */
+
+.modalContainer {
+  position: relative;
+  background-size: contain; /* Ajusta la imagen al contenedor sin recortarla */
+  background-position: center; /* Centra la imagen */
+  background-repeat: no-repeat; /* Evita que la imagen se repita */
+  min-height: 50vh; /* Altura mínima para asegurar que el modal sea visible */
+  max-height: 80vh; /* Altura máxima para evitar que sea demasiado grande */
+  width: 100%; /* Ancho completo */
+  max-width: 1200px; /* Ancho máximo para pantallas grandes */
+  display: flex; /* Alineación flexible para centrar el contenido */
+  flex-direction: column; /* Alineación vertical del contenido */
+  justify-content: center; /* Centra el contenido verticalmente */
+  align-items: center; /* Centra el contenido horizontalmente */
+  border-radius: 0.5rem; /* Bordes redondeados */
+  overflow: hidden; /* Evita que el contenido se desborde */
+}
+
+.closeButton {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  font-size: 1.5rem;
+  color: #fbbf24; /* Color amber-400 */
+  cursor: pointer;
+  z-index: 10; /* Asegura que el botón esté por encima del contenido */
+}
+
+.content {
+  text-align: center;
+  z-index: 5; /* Asegura que el contenido esté por encima del fondo */
+  min-height: 10rem; /* Altura mínima para asegurar que el contenido siempre sea visible */
+  width: 100%; /* Ancho completo */
+  padding: 1rem; /* Espaciado interno */
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #fbbf24; /* Color amber-400 */
+  margin-bottom: 1rem;
+}
+
+.text {
+  font-size: 1rem;
+  color: #fbbf24; /* Color amber-400 */
+}
