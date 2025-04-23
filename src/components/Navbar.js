@@ -6,6 +6,7 @@ import SearchBar from "@/components/SearchBar";
 import ThemeToggle from "@/components/ThemeToggle";
 import BioModal from "@/components/BioModal"; // Importamos el modal
 import { useTheme } from "@/context/ThemeContext"; // Hook para el contexto del tema
+import { inter } from '../app/fonts';
 
 const Navbar = () => {
   const { theme } = useTheme(); // Obtenemos el tema del contexto
@@ -19,33 +20,36 @@ const Navbar = () => {
   return (
     <>
       <nav
-        className={`transition-all duration-300 border-b px-4 py-3 sm:px-6 lg:px-8 ${
+        className={`${inter.className} transition-all duration-300 border-b px-4 py-3 sm:px-6 lg:px-8 ${
           theme === "dark"
             ? "bg-gray-800 border-gray-700 text-gray-300"
             : "bg-white border-gray-200 text-gray-600"
         }`}
-        style={{ maxWidth: "100vw", overflow: "hidden" }} // Limitar ancho para evitar desbordamiento
+        style={{ maxWidth: "100vw", overflow: "hidden" }}
       >
         <div className="flex justify-between items-center">
-
           {/* Avatar y Enlaces */}
-          <div className="flex items-center space-x-4 w-full">
-
-            {/* Agregamos onClick al Avatar para abrir el modal */}
-            <div
-              onClick={() => setIsBioModalOpen(true)}
-              className="cursor-pointer flex-shrink-0"
-            >
+          <div className="flex items-center w-full">
+            {/* Container for Avatar and Name */}
+            <div className="flex items-center cursor-pointer" onClick={() => setIsBioModalOpen(true)}>
+              <div className="flex-shrink-0">
                 <Avatar />
+              </div>
+              <span 
+                className="text-2xl sm:text-3xl ml-2 sm:ml-4 tracking-wider"
+              >
+                ANA IBIS GONZÁLEZ
+              </span>
             </div>
-            <div className="hidden sm:flex flex-grow">
+
+            {/* Adjusted spacing for NavLinks */}
+            <div className="hidden sm:flex flex-grow ml-20">
               <NavLinks isMobile={false} theme={theme} />
             </div>
           </div>
 
           {/* Barra de Búsqueda y Toggle de Tema */}
           <div className="hidden sm:flex items-center space-x-4">
-            {/* <SearchBar theme={theme} /> */}
             <ThemeToggle />
           </div>
 
@@ -77,7 +81,6 @@ const Navbar = () => {
         {isOpen && (
           <div className="sm:hidden mt-4 space-y-2 overflow-x-hidden">
             <NavLinks isMobile={true} theme={theme} />
-            {/* <SearchBar theme={theme} /> */}
             <div className="flex justify-end">
               <ThemeToggle />
             </div>
