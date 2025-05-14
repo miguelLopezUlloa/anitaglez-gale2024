@@ -44,6 +44,16 @@ const ImageGallery = () => {
       title: "Por el mar de las antillas",
       dimensions: "51 x 39 inches",
     },
+    {
+      src: "/images/originals/anaibis_portal.jpg",
+      title: "Habrá otras formas",
+      dimensions: "39 x 39 inches",
+    },
+    {
+      src: "/images/originals/anaibis_polilla2.jpg",
+      title: "Como Polilla a la Luz",
+      dimensions: "39 x 39 inches",
+    },
   ];
 
   // Estado para manejar el modal
