@@ -4,6 +4,7 @@ import React, { useState, useEffect, useRef, useCallback } from "react";
 import Slider from "react-slick";
 import Image from "next/image";
 import { openAnIbisArtShop } from "../lib/openAnIbisArtShop";
+import ImageModal from "./ImageModal";
 
 const TXT_DIGITAL_PRINT = "Impresión digital de alta calidad con" + 
 " tinta de archivo derivada de una obra de arte original."
@@ -120,6 +121,7 @@ const PosterCarousel = () => {
   // Estado y referencias mejoradas
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
+  const [selectedImage, setSelectedImage] = useState(null); // Estado para el modal
   const mainSliderRef = useRef(null);
   const navSliderRef = useRef(null);
   
@@ -146,6 +148,15 @@ const PosterCarousel = () => {
   const handleNavClick = useCallback((index) => {
     handleSlideChange(index, true);
   }, [handleSlideChange]);
+  
+  // Funciones para manejar el modal de imagen
+  const handleImageClick = useCallback((item) => {
+    setSelectedImage(item);
+  }, []);
+  
+  const handleCloseModal = useCallback(() => {
+    setSelectedImage(null);
+  }, []);
   
   // Inicialización mejorada
   useEffect(() => {
@@ -213,15 +224,20 @@ const PosterCarousel = () => {
           <Slider {...mainSliderSettings} ref={mainSliderRef}>
             {digitalPrints.map((item, index) => (
               <div key={item.id} className="relative h-72 p-4">
-                <Image
-                  src={item.src}
-                  alt={item.title}
-                  width={300}
-                  height={300}
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  className="rounded-lg object-contain"
-                  priority={index === 0}
-                />
+                <div 
+                  className="cursor-pointer h-full w-full flex items-center justify-center"
+                  onClick={() => handleImageClick(item)}
+                >
+                  <Image
+                    src={item.src}
+                    alt={item.title}
+                    width={300}
+                    height={300}
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="rounded-lg object-contain hover:scale-105 transition-transform duration-300"
+                    priority={index === 0}
+                  />
+                </div>
               </div>
             ))}
           </Slider>
@@ -302,6 +318,16 @@ const PosterCarousel = () => {
           </Slider>
         </div>
       </div>
+
+      {/* Modal de la imagen */}
+      {selectedImage && (
+        <ImageModal
+          src={selectedImage.src}
+          title={selectedImage.title}
+          dimensions={selectedImage.dimensions}
+          onClose={handleCloseModal}
+        />
+      )}
 
     </div>
   );
