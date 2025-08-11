@@ -68,27 +68,35 @@ const ImageGallery = () => {
   };
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 p-4">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 p-4 sm:p-6">
       {/* Galería de imágenes */}
       {images.map((image, index) => (
         <div
           key={index}
-          className="relative group cursor-pointer overflow-hidden rounded-lg shadow-lg"
+          className="relative group cursor-pointer overflow-hidden rounded-lg shadow-lg bg-white dark:bg-gray-800"
           onClick={() => handleOpenModal(image)}
-          style={{ height: "652px" }} // Altura aumentada en 15%
         >
-          <Image
-            src={image.src}
-            alt={image.title}
-            width={250} // Mantiene el ancho proporcional
-            height={652} // Altura ajustada en 15% más
-            className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300"
-          />
-          {/* Superposición de información en hover */}
-          <div className="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity duration-300">
-            <p className="text-white text-sm sm:text-base text-center">
-              {image.title}
-            </p>
+          {/* Contenedor responsive para la imagen */}
+          <div className="relative aspect-[3/4] sm:aspect-[4/5] w-full">
+            <Image
+              src={image.src}
+              alt={image.title}
+              fill
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+              className="object-cover group-hover:scale-110 transition-transform duration-500 ease-out"
+              quality={85}
+            />
+            {/* Overlay mejorado con información en hover */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <div className="absolute bottom-0 left-0 right-0 p-4">
+                <p className="text-white font-semibold text-sm sm:text-base leading-tight">
+                  {image.title}
+                </p>
+                <p className="text-white/80 text-xs sm:text-sm mt-1">
+                  {image.dimensions}
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       ))}
