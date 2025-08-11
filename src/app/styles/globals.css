@@ -33,10 +33,20 @@ body {
   /*font-family: Arial, sans-serif;*/
 }
 
+/* Dots del carrusel - Enfocado y simple */
+/* Tema Dark: Dots blancos */
+.dark .slick-dots li button:before {
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+.dark .slick-dots li.slick-active button:before {
+  color: rgba(255, 255, 255, 1) !important;
+}
+
+/* Tema Light: Dots negros (original) */
 .slick-dots li button:before {
-  color: #284756; /* Color personalizado */
+  color: rgba(0, 0, 0, 0.6) !important;
 }
 .slick-dots li.slick-active button:before {
-  color: #1f3a42; /* Color para el punto activo */
+  color: rgba(0, 0, 0, 0.9) !important;
 }
 
