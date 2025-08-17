@@ -124,6 +124,7 @@ const PosterCarousel = () => {
   const [selectedImage, setSelectedImage] = useState(null); // Estado para el modal
   const mainSliderRef = useRef(null);
   const navSliderRef = useRef(null);
+  const mainContainerRef = useRef(null);
   
   // Breakpoints reactivos
   const isMobile = useMediaQuery('(max-width: 768px)');
@@ -147,6 +148,12 @@ const PosterCarousel = () => {
   // Callback específico para clicks en el carrusel de navegación
   const handleNavClick = useCallback((index) => {
     handleSlideChange(index, true);
+    // Enfocar carrusel principal tras seleccionar Related
+    setTimeout(() => {
+      if (mainContainerRef.current) {
+        mainContainerRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    }, 0);
   }, [handleSlideChange]);
   
   // Funciones para manejar el modal de imagen
@@ -220,7 +227,7 @@ const PosterCarousel = () => {
       {/* Carrusel principal e información del producto */}
       <div className="flex flex-col lg:flex-row gap-4">
         {/* Carrusel principal */}
-        <div className="w-full lg:w-6/12 px-4 bg-gray-50 dark:bg-gray-900 rounded-lg relative">
+        <div className="w-full lg:w-6/12 px-4 bg-gray-50 dark:bg-gray-900 rounded-lg relative" ref={mainContainerRef}>
           <Slider {...mainSliderSettings} ref={mainSliderRef}>
             {digitalPrints.map((item, index) => (
               <div key={item.id} className="relative h-72 p-4">

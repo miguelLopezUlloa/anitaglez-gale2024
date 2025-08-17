@@ -50,3 +50,9 @@ body {
   color: rgba(0, 0, 0, 0.9) !important;
 }
 
+/* Artist name hover effect - more subtle and elegant */
+.group:hover .artist-name-effect {
+  transform: translateY(-1px);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+

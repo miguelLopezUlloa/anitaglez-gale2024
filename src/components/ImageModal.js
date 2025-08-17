@@ -11,6 +11,7 @@ const ImageModal = ({ src, title, dimensions, onClose }) => {
   const [translate, setTranslate] = useState({ x: 0, y: 0 });
   const panRef = useRef({ lastX: 0, lastY: 0, isPanning: false, mouseDown: false });
   const pinchRef = useRef({ startDistance: 0, startScale: 1 });
+  const [showHint, setShowHint] = useState(false);
 
   useEffect(() => {
     const el = wrapperRef.current;
@@ -24,6 +25,19 @@ const ImageModal = ({ src, title, dimensions, onClose }) => {
       el.removeEventListener("gesturechange", prevent);
       el.removeEventListener("gestureend", prevent);
     };
+  }, []);
+
+  // Mostrar hint "Pinch to zoom" solo una vez en móvil
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const isMobile = window.matchMedia('(max-width: 768px)').matches;
+    const seen = localStorage.getItem('pz_seen');
+    if (isMobile && !seen) {
+      setShowHint(true);
+      const t = setTimeout(() => setShowHint(false), 2500);
+      localStorage.setItem('pz_seen', '1');
+      return () => clearTimeout(t);
+    }
   }, []);
 
   const getDistance = (touches) => {
@@ -119,18 +133,18 @@ const ImageModal = ({ src, title, dimensions, onClose }) => {
 
   return (
     <div
-      className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-75 z-50 p-2 sm:p-4 overflow-y-auto"
+      className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-75 z-50 p-0 sm:p-4 overflow-y-auto"
       onClick={onClose}
       role="dialog"
       aria-modal="true"
     >
       <div
-        className="relative bg-white dark:bg-gray-800 rounded-lg shadow-lg w-[100vw] sm:w-full max-w-none sm:max-w-3xl mx-auto p-2 sm:p-6"
+        className="relative bg-white dark:bg-gray-800 rounded-lg shadow-lg w-[100vw] sm:w-full max-w-none sm:max-w-3xl mx-auto p-1 sm:p-5 h-[calc(95vh-80px)] sm:h-auto sm:max-h-[85vh] overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Botón de cierre */}
         <button
-          className="absolute top-2 right-2 text-amber-400 text-2xl z-30 pointer-events-auto"
+          className="absolute top-1 right-1 sm:top-2 sm:right-2 text-amber-400 text-3xl sm:text-2xl z-30 pointer-events-auto bg-black/50 rounded-full w-10 h-10 sm:w-8 sm:h-8 flex items-center justify-center"
           onClick={onClose}
           aria-label="Close Modal"
         >
@@ -138,11 +152,11 @@ const ImageModal = ({ src, title, dimensions, onClose }) => {
         </button>
 
         {/* Contenido del modal */}
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col items-center relative h-full">
           {/* Wrapper con zoom/pan solo dentro, sin afectar overlay */}
           <div
             ref={wrapperRef}
-            className="relative w-full h-[80vh] sm:h-[65vh] md:h-[60vh] touch-none select-none overflow-hidden"
+            className="relative w-full h-[calc(100%-60px)] sm:h-[65vh] md:h-[60vh] touch-none select-none overflow-hidden"
             onTouchStart={onTouchStart}
             onTouchMove={onTouchMove}
             onTouchEnd={onTouchEnd}
@@ -161,6 +175,11 @@ const ImageModal = ({ src, title, dimensions, onClose }) => {
                 transition: scale === 1 ? 'transform 120ms ease-out' : 'none',
               }}
             >
+              {showHint && (
+                <div className="absolute top-2 left-2 bg-black/70 text-white text-xs px-2 py-1 rounded-md">
+                  Pinch to zoom
+                </div>
+              )}
               <Image
                 src={src}
                 alt={title || "Image"}
@@ -173,13 +192,21 @@ const ImageModal = ({ src, title, dimensions, onClose }) => {
           </div>
 
           {/* Título y dimensiones */}
-          <div className="text-center mt-4">
-            <h2 className="text-lg sm:text-xl font-bold text-gray-800 dark:text-gray-100">
+          <div className="text-center mt-1 sm:mt-3">
+            <h2 className="text-base sm:text-xl font-bold text-gray-800 dark:text-gray-100">
               {title}
             </h2>
-            <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400">
+            <p className="text-xs sm:text-base text-gray-600 dark:text-gray-400">
               {dimensions}
             </p>
+            {scale > 1 && (
+              <button
+                className="mt-2 bg-gray-700 text-white text-xs px-3 py-1 rounded shadow-md hover:bg-gray-600"
+                onClick={() => { setScale(1); setTranslate({ x: 0, y: 0 }); }}
+              >
+                Reset view
+              </button>
+            )}
           </div>
         </div>
       </div>

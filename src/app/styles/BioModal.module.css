@@ -6,25 +6,73 @@
   background-position: center; /* Centra la imagen */
   background-repeat: no-repeat; /* Evita que la imagen se repita */
   min-height: 50vh; /* Altura mínima para asegurar que el modal sea visible */
-  max-height: 80vh; /* Altura máxima para evitar que sea demasiado grande */
-  width: 100%; /* Ancho completo */
-  max-width: 1200px; /* Ancho máximo para pantallas grandes */
+  max-height: 85vh; /* Altura máxima para evitar que sea demasiado grande */
+  width: 90%; /* Ancho 90% en móviles */
+  max-width: 800px; /* Ancho máximo reducido para que el botón esté más cerca */
   display: flex; /* Alineación flexible para centrar el contenido */
   flex-direction: column; /* Alineación vertical del contenido */
   justify-content: center; /* Centra el contenido verticalmente */
   align-items: center; /* Centra el contenido horizontalmente */
   border-radius: 0.5rem; /* Bordes redondeados */
   overflow: hidden; /* Evita que el contenido se desborde */
+  margin: auto; /* Centrar el contenedor */
+}
+
+/* Responsive adjustments */
+@media (min-width: 640px) {
+  .modalContainer {
+    width: 85%;
+    max-width: 700px;
+  }
+}
+
+@media (min-width: 768px) {
+  .modalContainer {
+    width: 80%;
+    max-width: 750px;
+    min-height: 60vh;
+  }
+}
+
+@media (min-width: 1024px) {
+  .modalContainer {
+    width: 75%;
+    max-width: 800px;
+  }
 }
 
 .closeButton {
   position: absolute;
-  top: 0.5rem;
-  right: 0.5rem;
-  font-size: 1.5rem;
+  top: 1rem;
+  right: 1rem;
+  font-size: 2rem;
   color: #fbbf24; /* Color amber-400 */
   cursor: pointer;
   z-index: 10; /* Asegura que el botón esté por encima del contenido */
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente */
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  border: none;
+  line-height: 1;
+}
+
+.closeButton:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+  transform: scale(1.1);
+}
+
+/* Responsive close button */
+@media (min-width: 768px) {
+  .closeButton {
+    font-size: 2.5rem;
+    width: 45px;
+    height: 45px;
+  }
 }
 
 .content {
