@@ -12,6 +12,7 @@ const Navbar = () => {
   const { theme } = useTheme(); // Obtenemos el tema del contexto
   const [isOpen, setIsOpen] = useState(false); // Estado para el menú móvil
   const [isBioModalOpen, setIsBioModalOpen] = useState(false); // Estado para el modal
+  const [showTooltip, setShowTooltip] = useState(false); // Estado para el tooltip
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -31,14 +32,48 @@ const Navbar = () => {
           {/* Avatar y Enlaces */}
           <div className="flex items-center w-full">
             {/* Container for Avatar and Name */}
-            <div className="flex items-center cursor-pointer" onClick={() => setIsBioModalOpen(true)}>
+            <div 
+              className="flex items-center cursor-pointer relative group"
+              onClick={() => setIsBioModalOpen(true)}
+              onMouseEnter={() => setShowTooltip(true)}
+              onMouseLeave={() => setShowTooltip(false)}
+            >
               <div className="flex-shrink-0">
                 <Avatar />
               </div>
               <span 
-                className="text-2xl sm:text-3xl ml-2 sm:ml-4 tracking-wider"
+                className="text-lg sm:text-2xl md:text-3xl ml-2 sm:ml-4 tracking-wider 
+                          transition-all duration-500 relative inline-flex items-center artist-name-effect
+                          group-hover:text-yellow-400"
+                style={{
+                  textShadow: showTooltip
+                    ? theme === "dark" 
+                      ? "0 0 15px rgba(250, 204, 21, 0.5), 0 0 30px rgba(250, 204, 21, 0.3)"
+                      : "0 0 10px rgba(250, 204, 21, 0.4), 0 0 20px rgba(250, 204, 21, 0.2)"
+                    : "none"
+                }}
               >
-                ANA IBIS GONZÁLEZ
+                <span className="relative">
+                  ANA IBIS GONZÁLEZ
+                  {/* Elegant underline that appears on hover */}
+                  <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-yellow-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></span>
+                </span>
+                <svg 
+                  className="w-3 h-3 sm:w-4 sm:h-4 ml-1 sm:ml-2 opacity-0 group-hover:opacity-60 transition-opacity duration-500"
+                  fill="currentColor" 
+                  viewBox="0 0 20 20" 
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path 
+                    fillRule="evenodd" 
+                    d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" 
+                    clipRule="evenodd"
+                  />
+                </svg>
+                {/* Small text hint */}
+                <span className="absolute -bottom-8 sm:-bottom-10 left-0 text-[10px] sm:text-xs text-gray-500 dark:text-gray-400 opacity-0 group-hover:opacity-100 transition-opacity duration-500 whitespace-nowrap">
+                  Click for Artist Biography
+                </span>
               </span>
             </div>
 
